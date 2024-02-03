@@ -6,4 +6,10 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="RadiationImpedance\FieldExcited\" />
+    <Folder Include="RadiationImpedance\Objects\" />
+    <Folder Include="RadiationImpedance\Pistons\" />
+  </ItemGroup>
+
 </Project>
