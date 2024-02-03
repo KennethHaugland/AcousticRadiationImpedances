@@ -10,4 +10,11 @@
     <PackageReference Include="OxyPlot.Wpf" Version="2.1.2" />
     <PackageReference Include="Prism.Unity" Version="8.1.97" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Acoustics\Acoustics.csproj" />
+    <ProjectReference Include="..\Mathematics\Mathematics.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Module\" />
+  </ItemGroup>
 </Project>

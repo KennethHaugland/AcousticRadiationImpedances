@@ -82,10 +82,11 @@ namespace RadiationOfSound.ViewModels
             List<Complex> RStrip = new List<Complex>();
             for (double k = 0; k <= UpperMode; k += deltaWaveNumber)
             {
-                var Rectangular = Acoustics.Radiation.FieldExcited.Rectangular(k, theta, phi, a, b);
-                //var WideStrip = Acoustics.Radiation.FieldExcited.WideStrip(k, theta, phi, a);
-                var NarrowStrip = Acoustics.Radiation.FieldExcited.NarrowStrip(k, theta, phi, a);
-                var WideRStrip = Acoustics.Radiation.FieldExcited.Rectangular(k, 0, 0, a, a*10);
+                
+                var Rectangular = Acoustics.RadiationImpedance.FieldExcited.Rectangular(k, theta, phi, a, b);
+                var WideStrip = Acoustics.RadiationImpedance.FieldExcited.WideStrip(k, theta, phi, a);
+                var NarrowStrip = Acoustics.RadiationImpedance.FieldExcited.NarrowStrip(k, theta, phi, a);
+               var WideRStrip = Acoustics.RadiationImpedance.FieldExcited.Rectangular(k, 0, 0, a, a*10);
                 //double[] StripRealDifference = new double[] { WideStrip.Real, NarrowStrip.Real };
                 //double[] StripImagDifference = new double[] { WideStrip.Imaginary, NarrowStrip.Imaginary };
 
@@ -109,20 +110,20 @@ namespace RadiationOfSound.ViewModels
 
             List<Complex> CircularResult = new List<Complex>();
             for (double k = 0; k <= UpperMode; k += deltaWaveNumber)
-                CircularResult.Add(Acoustics.Radiation.Pistons.CircularBaffle(k, a));
+                CircularResult.Add(Acoustics.RadiationImpedance.Pistons.CircularBaffle(k, a));
          
             CircularBaffelPlot = OxyPlotHelper.PlotArray(CircularResult, "Circular piston" );
 
             List<Complex> EllipticResult = new List<Complex>();
             for (double k = 0; k <= UpperMode; k += deltaWaveNumber)
-                EllipticResult.Add(Acoustics.Radiation.Pistons.EllipticBaffle(k, a, b));
+                EllipticResult.Add(Acoustics.RadiationImpedance.Pistons.EllipticBaffle(k, a, b));
    
             EllipticPlotModel = OxyPlotHelper.PlotArray(EllipticResult, "Elliptic piston");
 
             List<Complex> RetangularPistonResult = new List<Complex>();
             for (double k = 0; k <= UpperMode; k += deltaWaveNumber)
             {
-                RetangularPistonResult.Add(Acoustics.Radiation.FieldExcited.Rectangular(k, 0, 0, a, b));
+                RetangularPistonResult.Add(Acoustics.RadiationImpedance.FieldExcited.Rectangular(k, 0, 0, a, b));
                 //   RetangularPistonResult.Add(Acoustics.Radiation.Pistons.RetangularBaffel(k, a, b));
             }
             RectangularPistonPlotmodel = OxyPlotHelper.PlotArray(RetangularPistonResult, "Rectangular piston");

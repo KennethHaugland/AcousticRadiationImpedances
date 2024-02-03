@@ -33,7 +33,7 @@ namespace MathTests
             // AssertHelpers.AlmostEqualRelative(expected, Acoustics.SpecialFunctions.StruveH(n, x).Real, decimalPlaces);
             
             // This works for all cases I tested. 9 digits is good enough for all practical cases in acosutics i.e. it works for me!
-            AssertHelpers.AlmostEqualRelative(expected, Acoustics.SpecialFunctions.StruveH(n, x).Real, 9);
+            AssertHelpers.AlmostEqualRelative(expected, Mathematics.SpecialFunctions.StruveH(n, x).Real, 9);
         }
 
 

@@ -14,7 +14,7 @@ namespace MathTests
         [TestCase(0.9, 2.578092113348173, 15)]
         public void EllipticKExact(double n, double expected, int decimalPlaces)
         {
-            AssertHelpers.AlmostEqualRelative(expected, Acoustics.SpecialFunctions.EllipticK(n), decimalPlaces);
+            AssertHelpers.AlmostEqualRelative(expected, Mathematics.SpecialFunctions.EllipticK(n), decimalPlaces);
         }
 
         [TestCase(0.0, 1.570796326794897, 15)]
@@ -22,7 +22,7 @@ namespace MathTests
         [TestCase(0.9, 1.104774732704073, 15)]
         public void EllipticEExact(double n, double expected, int decimalPlaces)
         {
-            AssertHelpers.AlmostEqualRelative(expected, Acoustics.SpecialFunctions.EllipticE(n), decimalPlaces);
+            AssertHelpers.AlmostEqualRelative(expected, Mathematics.SpecialFunctions.EllipticE(n), decimalPlaces);
         }
     }
 }
