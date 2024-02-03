@@ -99,7 +99,7 @@ namespace RadiationOfSound.ViewModels
                 RectangularResults.Add(Rectangular);
                 //SphericalRadiator.Add(new Complex(0,-1)* Acoustics.SpecialFunctions.SphericalHankel02(1,k)/Acoustics.SpecialFunctions.SphericalHankel02Derivative(1,k));
                 NStrip.Add(NarrowStrip);
-                RStrip.Add(WideRStrip);
+                WStrip.Add(WideRStrip);
             }
 
             FieldExcitedPlotModel = OxyPlotHelper.PlotArray(RectangularResults, "");           
@@ -110,7 +110,7 @@ namespace RadiationOfSound.ViewModels
 
             List<Complex> CircularResult = new List<Complex>();
             for (double k = 0; k <= UpperMode; k += deltaWaveNumber)
-                CircularResult.Add(Acoustics.RadiationImpedance.Pistons.CircularBaffle(k, a));
+                CircularResult.Add(Acoustics.RadiationImpedance.Pistons.CircularSupportedBaffle(k, a));
          
             CircularBaffelPlot = OxyPlotHelper.PlotArray(CircularResult, "Circular piston" );
 
