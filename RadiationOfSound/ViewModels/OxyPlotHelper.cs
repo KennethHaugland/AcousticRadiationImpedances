@@ -72,7 +72,7 @@ namespace RadiationOfSound.ViewModels
 
         }
 
-        public static PlotModel PlotArray(List<List<Complex>> array, string degree)
+        public static PlotModel PlotArray(List<List<Complex>> array, string degree, double max = 2, double min = 0, string[] description = null)
         {
 
             PlotModel plotModel2 = new PlotModel();
@@ -83,21 +83,18 @@ namespace RadiationOfSound.ViewModels
                 LegendPosition = LegendPosition.TopLeft,
             });
 
-
-            string[] desc = new string[3] { "Narrow strip","Wide strip","Rectangular normal"};
-
             for (int i = 0; i < array.Count; i++)
             {
                 var item2 = array[i];
 
-                
+                var t = description != null ? " Type: " + description[i] : "";
 
                 LineSeries RealPart = new LineSeries();
-                RealPart.Title = "Real part - " + degree + " Type: " + desc[i];
+                RealPart.Title = "Real part - " + degree + t  ;
                 RealPart.MarkerType = MarkerType.None;
 
                 LineSeries ImaginaryPart = new LineSeries();
-                ImaginaryPart.Title = "Imaginary part - " + degree + " Type: " + desc[i];
+                ImaginaryPart.Title = "Imaginary part - " + degree + t;
                 ImaginaryPart.MarkerType = MarkerType.None;
                 ImaginaryPart.LineStyle = LineStyle.Dash;
                 double ind = 0;
@@ -116,8 +113,8 @@ namespace RadiationOfSound.ViewModels
             plotModel2.Axes.Add(new LinearAxis
             {
                 Position = AxisPosition.Left,
-                Minimum = 0,
-                Maximum = 2,
+                Minimum = min,
+                Maximum = max,
                 Title = "Z/ρ₀c₀S"
             });
 

@@ -15,6 +15,7 @@ namespace Acoustics.RadiationImpedance
                 return Complex.Zero;
             double ka = k * a;
 
+            // a_0, a_2, a_4
             double[] PistonBoundaryConditions = new double[3] { 1.0, 0.0, 0.0 };
             double[] ClampedBoundaryConditions = new double[3] { 1.0, -2.0, 1.0 };
             double[] SimplySupportedBoundaryCondition = new double[3]{1.0,-1.2453,0.2453};
@@ -22,14 +23,16 @@ namespace Acoustics.RadiationImpedance
             double[] a_n = ClampedBoundaryConditions;
             Complex ModalSum = Complex.Zero;
             Complex i = new Complex(0.0, 1.0);
-            Complex[] S_nm = Pistons.R(k);
-            Complex[] T_nm = Pistons.X(k);
+            Complex[] S_nm = Pistons.R(ka);
+            Complex[] T_nm = Pistons.X(ka);
             for (double n = 0.0; n < 3.0; ++n)
             {
                 for (double m = 0.0; m < 3.0; ++m)
                 {
+                    // Modal solutions where all permutations give the same result
                     double max = Math.Max(n, m);
                     double min = Math.Min(n, m);
+
                     Complex PartialResult = Complex.Zero;
                     if (max == 0.0)
                         PartialResult = S_nm[0] + i * T_nm[0];

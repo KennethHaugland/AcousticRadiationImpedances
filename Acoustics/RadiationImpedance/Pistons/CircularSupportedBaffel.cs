@@ -16,7 +16,7 @@ namespace Acoustics.RadiationImpedance
                 return Complex.Zero;
             
             // BC
-            double[] a_n = new double[3] { 1.0, -2.0, 1.0 }; 
+            double[] a_n = new double[3] { 1.0, -1.2453, 0.2453 };
 
             // Velocity
             double sum = 0.0;
@@ -26,8 +26,8 @@ namespace Acoustics.RadiationImpedance
 
             Complex Sum = Complex.Zero;
             Complex i = new Complex(0.0, 1.0);
-            Complex[] S_nm = Pistons.R(k);
-            Complex[] T_nm = Pistons.X(k);
+            Complex[] S_nm = Pistons.R(k*a);
+            Complex[] T_nm = Pistons.X(k*a);
             for (double n = 0.0; n < 3.0; ++n)
             {
                 for (double m = 0.0; m < 3.0; ++m)

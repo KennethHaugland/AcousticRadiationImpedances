@@ -22,12 +22,12 @@ namespace Mathematics
             if (n == 1)
                 return new double[] { 1, x };
 
-            double[] P = new double[(int)n];
+            double[] P = new double[(int)n+1];
             P[0] = 1;
             P[1] = x;
 
-            for (int i = 2; i < n; i++)
-                P[i] = ((x * (2 * i + 1) * x * P[i - 1] - i * P[i - 2]) / (i + 1));
+            for (int i = 2; i < P.Length; i++)
+                P[i] = ((x * (2 * (double)i - 1) * P[i - 1] - ((double)i -1) * P[i - 2]) / (double)i);
 
             return P;
         }
